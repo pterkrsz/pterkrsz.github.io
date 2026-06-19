@@ -1032,6 +1032,47 @@
     }
     .reveal, .reveal-left, .reveal-right { opacity: 1; transform: none; filter: none; }
   }
+
+  /* ============================
+     LANGUAGE SWITCHER
+  ============================ */
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+  .lang-switch {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 12px;
+    border: 1px solid var(--border-strong);
+    border-radius: 6px;
+    overflow: hidden;
+    background: rgba(15, 20, 28, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  .lang-switch button {
+    appearance: none;
+    -webkit-appearance: none;
+    background: transparent;
+    border: 0;
+    color: var(--text-dim);
+    padding: 6px 11px;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: color 0.2s var(--ease-out), background 0.2s var(--ease-out);
+  }
+  .lang-switch button + button { border-left: 1px solid var(--border-strong); }
+  .lang-switch button:hover { color: var(--text); }
+  .lang-switch button.active {
+    color: var(--accent);
+    background: var(--accent-glow);
+    text-shadow: 0 0 8px var(--accent-glow);
+  }
 </style>
 </head>
 <body>
@@ -1049,12 +1090,18 @@
 <nav class="topbar" id="topbar">
   <div class="container">
     <a class="brand" href="#top"><span class="prompt">~$</span>kresz_peter<span class="cursor"></span></a>
-    <div class="nav-links">
-      <a href="#about" data-section="about">about</a>
-      <a href="#services" data-section="services">services</a>
-      <a href="#projects" data-section="projects">projects</a>
-      <a href="#skills" data-section="skills">skills</a>
-      <a href="#contact" data-section="contact">contact</a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="#about" data-section="about">about</a>
+        <a href="#services" data-section="services">services</a>
+        <a href="#projects" data-section="projects">projects</a>
+        <a href="#skills" data-section="skills">skills</a>
+        <a href="#contact" data-section="contact">contact</a>
+      </div>
+      <div class="lang-switch" id="langSwitch" aria-label="Language switcher">
+        <button type="button" data-lang="hu">HU</button>
+        <button type="button" data-lang="en">EN</button>
+      </div>
     </div>
   </div>
 </nav>
@@ -1063,27 +1110,26 @@
   <div class="container">
     <span class="hero-status">
       <span class="status-dot"></span>
-      Elérhető új projektekre
+      <span data-i18n="hero_status">Elérhető új projektekre</span>
     </span>
-    <h1 class="hero-title">
+    <h1 class="hero-title" data-i18n="hero_title">
       Krész Péter<br />
       <span class="gradient">freelancer</span> fejlesztő.
     </h1>
     <div class="hero-sub">
       <span class="arrow">&gt;</span><span id="typedText" class="typed"></span>
     </div>
-    <p class="hero-desc">
+    <p class="hero-desc" data-i18n="hero_desc">
       Egyéni vállalkozóként ipari és üzleti informatikai megoldások tervezésével és fejlesztésével
-      foglalkozom. Egyetemi tanulmányaim mellett az Ecocell Solar Energy-nél is dolgozom,
-      ahol energetikai rendszerekhez kötődő szoftverek és adatkezelési megoldások készítésében
-      veszek részt.
+      foglalkozom. Jelenleg az Ecocell Solar Energy-nél energetikai rendszerekhez kötődő szoftverek
+      és adatkezelési megoldások fejlesztésében veszek részt, emellett egyéni megbízásokat is vállalok.
     </p>
     <div class="hero-cta">
       <a href="#contact" class="btn primary">
-        Kapcsolatfelvétel
+        <span data-i18n="cta_contact">Kapcsolatfelvétel</span>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
-      <a href="#projects" class="btn ghost">Projektek megtekintése</a>
+      <a href="#projects" class="btn ghost" data-i18n="cta_projects">Projektek megtekintése</a>
     </div>
   </div>
 </section>
@@ -1091,34 +1137,34 @@
 <section id="about">
   <div class="container">
     <div class="section-label reveal">01 / about</div>
-    <h2 class="section-title reveal">Bemutatkozás</h2>
+    <h2 class="section-title reveal" data-i18n="about_title">Bemutatkozás</h2>
     <div class="about-grid">
       <div class="about-text reveal-left">
-        <p>
-          Az Óbudai Egyetem üzemmérnök informatikus szakának hallgatója vagyok kibervédelem
+        <p data-i18n="about_p1">
+          Az Óbudai Egyetem üzemmérnök informatikus szakán végeztem, kibervédelem
           szakirányon. A tanulmányaim és a munkám is az ipari informatika és az adatkezelés
           irányába visz — IIoT rendszerek, idősoros adatok, energetikai monitorozás.
         </p>
-        <p>
-          A főállásom mellett egyéni vállalkozóként vállalok megbízásokat: kisebb-közepes
+        <p data-i18n="about_p2">
+          A munkám mellett egyéni vállalkozóként vállalok megbízásokat: kisebb-közepes
           CRM megoldások, weboldalak, és mobilalkalmazások fejlesztését. Olyan
           munkákban vagyok igazán otthon, ahol szoftvert kell összekötni eszközökkel,
           adatokkal vagy folyamatokkal — és nem csak egy felület kell, hanem egy
           tényleg működő, karbantartható megoldás.
         </p>
-        <p>
+        <p data-i18n="about_p3">
           Ha van egy ötleted, problémád vagy egy meglévő rendszered amit szeretnél
           továbbfejleszteni — szívesen átbeszéljük.
         </p>
       </div>
       <div class="about-card reveal-right">
         <div class="row"><span class="key">name</span><span class="val">Krész Péter</span></div>
-        <div class="row"><span class="key">role</span><span class="val">Freelancer dev</span></div>
+        <div class="row"><span class="key">role</span><span class="val" data-i18n="card_role">Freelancer dev</span></div>
         <div class="row"><span class="key">based_in</span><span class="val">Budapest, HU</span></div>
         <div class="row"><span class="key">studies</span><span class="val">ÓE — CyberSec</span></div>
         <div class="row"><span class="key">company</span><span class="val">Ecocell Solar</span></div>
-        <div class="row"><span class="key">langs</span><span class="val">HU / EN (B2)</span></div>
-        <div class="row"><span class="key">status</span><span class="val" style="color: var(--accent)">available</span></div>
+        <div class="row"><span class="key">langs</span><span class="val">HU / EN</span></div>
+        <div class="row"><span class="key">status</span><span class="val" style="color: var(--accent)" data-i18n="card_status">available</span></div>
       </div>
     </div>
   </div>
@@ -1127,15 +1173,15 @@
 <section id="services">
   <div class="container">
     <div class="section-label reveal">02 / services</div>
-    <h2 class="section-title reveal">Szolgáltatások</h2>
+    <h2 class="section-title reveal" data-i18n="services_title">Szolgáltatások</h2>
     <div class="services-grid">
 
       <div class="service reveal">
         <div class="service-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         </div>
-        <h3>CRM rendszerek</h3>
-        <p>Ügyfélkapcsolat-kezelő rendszerek tervezése, integrációja és testreszabása. Egyedi modulok, automatizációk, API-k.</p>
+        <h3 data-i18n="svc1_h">CRM rendszerek</h3>
+        <p data-i18n="svc1_p">Ügyfélkapcsolat-kezelő rendszerek tervezése, integrációja és testreszabása. Egyedi modulok, automatizációk, API-k.</p>
         <div class="tags">
           <span class="tag">CRM</span>
           <span class="tag">automation</span>
@@ -1147,8 +1193,8 @@
         <div class="service-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
         </div>
-        <h3>Webfejlesztés</h3>
-        <p>Bemutatkozó oldalak, landing oldalak és kisebb webalkalmazások. Tiszta kód, gyors betöltés, reszponzív megjelenés.</p>
+        <h3 data-i18n="svc2_h">Webfejlesztés</h3>
+        <p data-i18n="svc2_p">Bemutatkozó oldalak, landing oldalak és kisebb webalkalmazások. Tiszta kód, gyors betöltés, reszponzív megjelenés.</p>
         <div class="tags">
           <span class="tag">HTML/CSS</span>
           <span class="tag">JS</span>
@@ -1160,8 +1206,8 @@
         <div class="service-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
         </div>
-        <h3>Mobilapp-fejlesztés</h3>
-        <p>Cross-platform mobilalkalmazások — iOS és Android egyetlen kódbázisból. Belső céges appok és ügyfél-oldali megoldások.</p>
+        <h3 data-i18n="svc3_h">Mobilapp-fejlesztés</h3>
+        <p data-i18n="svc3_p">Cross-platform mobilalkalmazások — iOS és Android egyetlen kódbázisból. Belső céges appok és ügyfél-oldali megoldások.</p>
         <div class="tags">
           <span class="tag">cross-platform</span>
           <span class="tag">native UI</span>
@@ -1172,8 +1218,8 @@
         <div class="service-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
         </div>
-        <h3>IIoT &amp; adatgyűjtés</h3>
-        <p>Ipari eszközök adatainak gyűjtése, idősoros tárolás, dashboardok. Modbus, MQTT és egyedi protokollok kezelése.</p>
+        <h3 data-i18n="svc4_h">IIoT &amp; adatgyűjtés</h3>
+        <p data-i18n="svc4_p">Ipari eszközök adatainak gyűjtése, idősoros tárolás, dashboardok. Modbus, MQTT és egyedi protokollok kezelése.</p>
         <div class="tags">
           <span class="tag">IIoT</span>
           <span class="tag">time-series</span>
@@ -1185,8 +1231,8 @@
         <div class="service-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
         </div>
-        <h3>Rendszergazda feladatok</h3>
-        <p>Kisebb hálózatok, szerverek és szolgáltatások üzemeltetése, monitorozás és biztonsági alapok beállítása.</p>
+        <h3 data-i18n="svc5_h">Rendszergazda feladatok</h3>
+        <p data-i18n="svc5_p">Kisebb hálózatok, szerverek és szolgáltatások üzemeltetése, monitorozás és biztonsági alapok beállítása.</p>
         <div class="tags">
           <span class="tag">Linux</span>
           <span class="tag">Docker</span>
@@ -1198,8 +1244,8 @@
         <div class="service-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
-        <h3>IT biztonsági audit</h3>
-        <p>Webes alkalmazások és kisebb infrastruktúrák átvilágítása. Konfigurációs hibák, tipikus sérülékenységek feltárása.</p>
+        <h3 data-i18n="svc6_h">IT biztonsági audit</h3>
+        <p data-i18n="svc6_p">Webes alkalmazások és kisebb infrastruktúrák átvilágítása. Konfigurációs hibák, tipikus sérülékenységek feltárása.</p>
         <div class="tags">
           <span class="tag">audit</span>
           <span class="tag">hardening</span>
@@ -1213,7 +1259,7 @@
 <section id="projects">
   <div class="container">
     <div class="section-label reveal">03 / projects</div>
-    <h2 class="section-title reveal">Projektek</h2>
+    <h2 class="section-title reveal" data-i18n="projects_title">Projektek</h2>
   </div>
 
   <div class="marquee reveal">
@@ -1252,8 +1298,8 @@
             <span class="type">IIoT &middot; desktop</span>
             <span class="year">2026</span>
           </div>
-          <h3>Solar Inverter Monitor</h3>
-          <p>WPF-alapú asztali monitorozó alkalmazás napelemes inverterekhez. Valós idejű akkumulátor-, hálózati és termelési adatok, MVVM architektúra, idősoros adatkezelés és testreszabható dashboard.</p>
+          <h3 data-i18n="prj1_h">Solar Inverter Monitor</h3>
+          <p data-i18n="prj1_p">WPF-alapú asztali monitorozó alkalmazás napelemes inverterekhez. Valós idejű akkumulátor-, hálózati és termelési adatok, MVVM architektúra, idősoros adatkezelés és testreszabható dashboard.</p>
           <div class="project-tags">
             <span class="tag">C#</span>
             <span class="tag">WPF</span>
@@ -1272,8 +1318,8 @@
             <span class="type">ERP &middot; migration</span>
             <span class="year">2025</span>
           </div>
-          <h3>Odoo 17 SaaS &rarr; on-premise migráció</h3>
-          <p>Vállalati ERP rendszer áttelepítése felhőből saját szerverre. PostgreSQL dump kezelés, verzió-downgrade, filestore migráció, Docker környezet, leállás-minimalizált éles átállás.</p>
+          <h3 data-i18n="prj2_h">Odoo 17 SaaS &rarr; on-premise migráció</h3>
+          <p data-i18n="prj2_p">Vállalati ERP rendszer áttelepítése felhőből saját szerverre. PostgreSQL dump kezelés, verzió-downgrade, filestore migráció, Docker környezet, leállás-minimalizált éles átállás.</p>
           <div class="project-tags">
             <span class="tag">Odoo 17 EE</span>
             <span class="tag">PostgreSQL</span>
@@ -1292,8 +1338,8 @@
             <span class="type">Odoo &middot; custom module</span>
             <span class="year">2025</span>
           </div>
-          <h3>Helyszíni munkalap rendszer</h3>
-          <p>Egyedi Odoo modul villanyszerelők terepi munkájához: mobilbarát űrlapok, vonalkódos készletkezelés, digitális aláírás, fotódokumentáció, automatikus jótállási jegy és számla generálás QWeb riportokkal.</p>
+          <h3 data-i18n="prj3_h">Helyszíni munkalap rendszer</h3>
+          <p data-i18n="prj3_p">Egyedi Odoo modul villanyszerelők terepi munkájához: mobilbarát űrlapok, vonalkódos készletkezelés, digitális aláírás, fotódokumentáció, automatikus jótállási jegy és számla generálás QWeb riportokkal.</p>
           <div class="project-tags">
             <span class="tag">Odoo</span>
             <span class="tag">Python</span>
@@ -1313,8 +1359,8 @@
             <span class="type">infrastructure</span>
             <span class="year">2024 — 2025</span>
           </div>
-          <h3>Vállalati IT infrastruktúra</h3>
-          <p>Kisvállalat új telephelyének teljes IT rendszere: hálózat (VLAN, OSPF, VPN), HP ProLiant szerver, HPE storage, Proxmox virtualizáció, TrueNAS Scale, IP-kamerák, riasztórendszer és GDPR-megfelelő adatvédelem.</p>
+          <h3 data-i18n="prj4_h">Vállalati IT infrastruktúra</h3>
+          <p data-i18n="prj4_p">Kisvállalat új telephelyének teljes IT rendszere: hálózat (VLAN, OSPF, VPN), HP ProLiant szerver, HPE storage, Proxmox virtualizáció, TrueNAS Scale, IP-kamerák, riasztórendszer és GDPR-megfelelő adatvédelem.</p>
           <div class="project-tags">
             <span class="tag">Proxmox</span>
             <span class="tag">TrueNAS</span>
@@ -1333,8 +1379,8 @@
             <span class="type">network &middot; VPN</span>
             <span class="year">2025</span>
           </div>
-          <h3>Tailscale multi-site VPN</h3>
-          <p>Több telephely biztonságos, mesh-alapú összekötése Tailscale-lel. Központi hozzáférés-szabályozás, távoli admin, terminál-szintű hálózati kapcsolat publikus IP nélkül.</p>
+          <h3 data-i18n="prj5_h">Tailscale multi-site VPN</h3>
+          <p data-i18n="prj5_p">Több telephely biztonságos, mesh-alapú összekötése Tailscale-lel. Központi hozzáférés-szabályozás, távoli admin, terminál-szintű hálózati kapcsolat publikus IP nélkül.</p>
           <div class="project-tags">
             <span class="tag">Tailscale</span>
             <span class="tag">WireGuard</span>
@@ -1352,8 +1398,8 @@
             <span class="type">security &middot; surveillance</span>
             <span class="year">2025</span>
           </div>
-          <h3>IP-kamera rendszer</h3>
-          <p>TP-Link VIGI alapú telephelyi megfigyelőrendszer telepítése és konfigurálása. PoE switchek, NVR, távoli elérés VPN-en, mozgásérzékelés és értesítések beállítása.</p>
+          <h3 data-i18n="prj6_h">IP-kamera rendszer</h3>
+          <p data-i18n="prj6_p">TP-Link VIGI alapú telephelyi megfigyelőrendszer telepítése és konfigurálása. PoE switchek, NVR, távoli elérés VPN-en, mozgásérzékelés és értesítések beállítása.</p>
           <div class="project-tags">
             <span class="tag">TP-Link VIGI</span>
             <span class="tag">NVR</span>
@@ -1371,8 +1417,8 @@
             <span class="type">infra &middot; data protection</span>
             <span class="year">2025</span>
           </div>
-          <h3>Backup és helyreállítási rendszer</h3>
-          <p>ZFS snapshot-alapú mentési stratégia TrueNAS Scale-en, ütemezett replikációval és tesztelt visszaállítási eljárással. GDPR-szempontú adatkezelés, dokumentált disaster recovery folyamat.</p>
+          <h3 data-i18n="prj7_h">Backup és helyreállítási rendszer</h3>
+          <p data-i18n="prj7_p">ZFS snapshot-alapú mentési stratégia TrueNAS Scale-en, ütemezett replikációval és tesztelt visszaállítási eljárással. GDPR-szempontú adatkezelés, dokumentált disaster recovery folyamat.</p>
           <div class="project-tags">
             <span class="tag">ZFS</span>
             <span class="tag">TrueNAS</span>
@@ -1391,8 +1437,8 @@
             <span class="type">IoT &middot; integration</span>
             <span class="year">2025</span>
           </div>
-          <h3>Smart sensor &amp; riasztó integráció</h3>
-          <p>Sonoff Zigbee érzékelők és mozgásdetektorok integrálása iHost központtal. Lokális automatizációk, beléptetés-figyelés, riasztó-trigger logika és értesítés-pipeline kiépítése.</p>
+          <h3 data-i18n="prj8_h">Smart sensor &amp; riasztó integráció</h3>
+          <p data-i18n="prj8_p">Sonoff Zigbee érzékelők és mozgásdetektorok integrálása iHost központtal. Lokális automatizációk, beléptetés-figyelés, riasztó-trigger logika és értesítés-pipeline kiépítése.</p>
           <div class="project-tags">
             <span class="tag">Zigbee</span>
             <span class="tag">Sonoff</span>
@@ -1411,8 +1457,8 @@
             <span class="type">freelance &middot; web</span>
             <span class="year">2024</span>
           </div>
-          <h3>Bemutatkozó weboldalak</h3>
-          <p>Kisvállalkozások számára készített egyoldalas céges weboldalak — letisztult dizájn, gyors betöltés, SEO-alapok, kapcsolati űrlap és reszponzív megjelenés mobilra is.</p>
+          <h3 data-i18n="prj9_h">Bemutatkozó weboldalak</h3>
+          <p data-i18n="prj9_p">Kisvállalkozások számára készített egyoldalas céges weboldalak — letisztult dizájn, gyors betöltés, SEO-alapok, kapcsolati űrlap és reszponzív megjelenés mobilra is.</p>
           <div class="project-tags">
             <span class="tag">HTML/CSS</span>
             <span class="tag">JS</span>
@@ -1431,8 +1477,8 @@
             <span class="type">freelance &middot; mobile</span>
             <span class="year">2024</span>
           </div>
-          <h3>Belső céges mobilapp</h3>
-          <p>Cross-platform alkalmazás dolgozói folyamatok támogatására: bejelentkezés, feladatlisták, push értesítések és offline mód, REST API integrációval.</p>
+          <h3 data-i18n="prj10_h">Belső céges mobilapp</h3>
+          <p data-i18n="prj10_p">Cross-platform alkalmazás dolgozói folyamatok támogatására: bejelentkezés, feladatlisták, push értesítések és offline mód, REST API integrációval.</p>
           <div class="project-tags">
             <span class="tag">cross-platform</span>
             <span class="tag">REST API</span>
@@ -1442,7 +1488,7 @@
       </div>
 
     </div>
-    <p style="margin-top: 28px; font-family: var(--mono); font-size: 12px; color: var(--text-faint);">
+    <p style="margin-top: 28px; font-family: var(--mono); font-size: 12px; color: var(--text-faint);" data-i18n="projects_note">
       // a projektek egy része NDA alatt áll — referenciaként szívesen elküldöm őket egyeztetés után.
     </p>
   </div>
@@ -1451,11 +1497,11 @@
 <section id="skills">
   <div class="container">
     <div class="section-label reveal">04 / stack</div>
-    <h2 class="section-title reveal">Készségek &amp; tanulmányok</h2>
+    <h2 class="section-title reveal" data-i18n="skills_title">Készségek &amp; tanulmányok</h2>
 
     <div class="skills-grid">
       <div class="skills-block reveal-left">
-        <h3>// technológia</h3>
+        <h3 data-i18n="skb_tech">// technológia</h3>
         <div class="skill-tags">
           <span class="chip">C#</span>
           <span class="chip">.NET / WPF</span>
@@ -1476,55 +1522,55 @@
       </div>
 
       <div class="skills-block reveal-right">
-        <h3>// szakterület</h3>
+        <h3 data-i18n="skb_expertise">// szakterület</h3>
         <div class="skill-tags">
           <span class="chip">IIoT</span>
-          <span class="chip">Time-series adatok</span>
-          <span class="chip">ERP migráció</span>
+          <span class="chip" data-i18n="chip_ts">Time-series adatok</span>
+          <span class="chip" data-i18n="chip_erp">ERP migráció</span>
           <span class="chip">Systems Engineering</span>
           <span class="chip">VLAN / OSPF</span>
           <span class="chip">VPN (IPsec, Tailscale)</span>
           <span class="chip">OOP</span>
           <span class="chip">Network Security</span>
           <span class="chip">System Administration</span>
-          <span class="chip">GDPR / adatvédelem</span>
+          <span class="chip" data-i18n="chip_gdpr">GDPR / adatvédelem</span>
           <span class="chip">Project Management</span>
           <span class="chip">Problem Solving</span>
         </div>
       </div>
 
       <div class="skills-block reveal" style="grid-column: 1 / -1;">
-        <h3>// tanulmányok &amp; képesítések</h3>
+        <h3 data-i18n="skb_edu">// tanulmányok &amp; képesítések</h3>
         <div class="timeline">
           <div class="timeline-item">
-            <div class="when">2021 — jelenleg</div>
-            <div class="what">Computer Science Operational Engineer — CyberSecurity</div>
-            <div class="where">Óbudai Egyetem &middot; Neumann János Informatikai Kar</div>
+            <div class="when" data-i18n="tl1_when">2021 — 2025 &middot; diploma</div>
+            <div class="what" data-i18n="tl1_what">Üzemmérnök informatikus (BSc) — Kibervédelem szakirány</div>
+            <div class="where" data-i18n="tl1_where">Óbudai Egyetem &middot; Neumann János Informatikai Kar</div>
           </div>
           <div class="timeline-item">
-            <div class="when">2025 — szakdolgozat</div>
-            <div class="what">Kisvállalati IT infrastruktúra tervezése és kiépítése</div>
-            <div class="where">hálózati alapok, Proxmox / TrueNAS, Odoo on-premise migráció, egyedi modulok</div>
+            <div class="when" data-i18n="tl2_when">2025 — szakdolgozat</div>
+            <div class="what" data-i18n="tl2_what">Kisvállalati IT infrastruktúra tervezése és kiépítése</div>
+            <div class="where" data-i18n="tl2_where">hálózati alapok, Proxmox / TrueNAS, Odoo on-premise migráció, egyedi modulok</div>
           </div>
           <div class="timeline-item">
-            <div class="when">2021 — 2022</div>
-            <div class="what">IT rendszer- és alkalmazás-üzemeltető technikus</div>
-            <div class="where">BMSZC Bláthy Ottó Titusz Informatikai Technikum</div>
+            <div class="when" data-i18n="tl3_when">2021 — 2022</div>
+            <div class="what" data-i18n="tl3_what">IT rendszer- és alkalmazás-üzemeltető technikus</div>
+            <div class="where" data-i18n="tl3_where">BMSZC Bláthy Ottó Titusz Informatikai Technikum</div>
           </div>
           <div class="timeline-item">
-            <div class="when">2016 — 2020</div>
-            <div class="what">Érettségi — Informatika szakirány</div>
-            <div class="where">BMSZC Bláthy Ottó Titusz Informatikai Technikum</div>
+            <div class="when" data-i18n="tl4_when">2016 — 2020</div>
+            <div class="what" data-i18n="tl4_what">Érettségi — Informatika szakirány</div>
+            <div class="where" data-i18n="tl4_where">BMSZC Bláthy Ottó Titusz Informatikai Technikum</div>
           </div>
           <div class="timeline-item">
-            <div class="when">tanúsítvány</div>
-            <div class="what">B2 angol nyelvvizsga — telc GmbH</div>
-            <div class="where">azonosító: PD330-01449</div>
+            <div class="when" data-i18n="tl5_when">tanúsítvány</div>
+            <div class="what" data-i18n="tl5_what">Angol nyelvvizsga — telc GmbH</div>
+            <div class="where" data-i18n="tl5_where">azonosító: PD330-01449</div>
           </div>
           <div class="timeline-item">
-            <div class="when">tanúsítvány</div>
-            <div class="what">International Computer Drivers License (ICDL)</div>
-            <div class="where">regisztrációs szám: HU000006053</div>
+            <div class="when" data-i18n="tl6_when">tanúsítvány</div>
+            <div class="what" data-i18n="tl6_what">International Computer Drivers License (ICDL)</div>
+            <div class="where" data-i18n="tl6_where">regisztrációs szám: HU000006053</div>
           </div>
         </div>
       </div>
@@ -1535,10 +1581,10 @@
 <section id="contact" class="contact">
   <div class="container">
     <div class="section-label reveal">05 / contact</div>
-    <h2 class="section-title reveal" style="margin-bottom: 32px;">Kapcsolat</h2>
+    <h2 class="section-title reveal" style="margin-bottom: 32px;" data-i18n="contact_title">Kapcsolat</h2>
     <div class="contact-box reveal">
-      <h2>Beszéljünk a <span class="gradient">projektedről.</span></h2>
-      <p>
+      <h2 data-i18n="contact_h2">Beszéljünk a <span class="gradient">projektedről.</span></h2>
+      <p data-i18n="contact_p">
         Egyedi fejlesztés, tanácsadás, vagy egy meglévő rendszer továbbfejlesztése —
         írj egy üzenetet és válaszolok pár napon belül.
       </p>
@@ -1562,14 +1608,232 @@
 
 <footer>
   <div class="container">
-    <div class="line">&copy; <span id="year"></span> Krész Péter — minden jog fenntartva.</div>
+    <div class="line" data-i18n="footer_copy">&copy; <span id="year"></span> Krész Péter — minden jog fenntartva.</div>
     <div class="line"><span class="accent">$</span> built with HTML, CSS, JS &middot; hosted on GitHub Pages</div>
   </div>
 </footer>
 
 <script>
-  // ===== Current year =====
-  document.getElementById('year').textContent = new Date().getFullYear();
+  // ===== i18n (HU / EN) =====
+  const YEAR = new Date().getFullYear();
+
+  const phrasesByLang = {
+    hu: ['CRM rendszerek','webfejlesztés','mobilapp · cross-platform','IIoT · Modbus · MQTT','Odoo · ERP migráció','Proxmox · TrueNAS · Linux','hálózati infrastruktúra'],
+    en: ['CRM systems','web development','mobile apps · cross-platform','IIoT · Modbus · MQTT','Odoo · ERP migration','Proxmox · TrueNAS · Linux','network infrastructure']
+  };
+
+  const translations = {
+    hu: {
+      __title: "Krész Péter — Freelancer fejlesztő",
+      hero_status: "Elérhető új projektekre",
+      hero_title: "Krész Péter<br /><span class='gradient'>freelancer</span> fejlesztő.",
+      hero_desc: "Egyéni vállalkozóként ipari és üzleti informatikai megoldások tervezésével és fejlesztésével foglalkozom. Jelenleg az Ecocell Solar Energy-nél energetikai rendszerekhez kötődő szoftverek és adatkezelési megoldások fejlesztésében veszek részt, emellett egyéni megbízásokat is vállalok.",
+      cta_contact: "Kapcsolatfelvétel",
+      cta_projects: "Projektek megtekintése",
+      about_title: "Bemutatkozás",
+      about_p1: "Az Óbudai Egyetem üzemmérnök informatikus szakán végeztem, kibervédelem szakirányon. A tanulmányaim és a munkám is az ipari informatika és az adatkezelés irányába visz — IIoT rendszerek, idősoros adatok, energetikai monitorozás.",
+      about_p2: "A munkám mellett egyéni vállalkozóként vállalok megbízásokat: kisebb-közepes CRM megoldások, weboldalak, és mobilalkalmazások fejlesztését. Olyan munkákban vagyok igazán otthon, ahol szoftvert kell összekötni eszközökkel, adatokkal vagy folyamatokkal — és nem csak egy felület kell, hanem egy tényleg működő, karbantartható megoldás.",
+      about_p3: "Ha van egy ötleted, problémád vagy egy meglévő rendszered amit szeretnél továbbfejleszteni — szívesen átbeszéljük.",
+      card_role: "Freelancer dev",
+      card_status: "available",
+      services_title: "Szolgáltatások",
+      svc1_h: "CRM rendszerek",
+      svc1_p: "Ügyfélkapcsolat-kezelő rendszerek tervezése, integrációja és testreszabása. Egyedi modulok, automatizációk, API-k.",
+      svc2_h: "Webfejlesztés",
+      svc2_p: "Bemutatkozó oldalak, landing oldalak és kisebb webalkalmazások. Tiszta kód, gyors betöltés, reszponzív megjelenés.",
+      svc3_h: "Mobilapp-fejlesztés",
+      svc3_p: "Cross-platform mobilalkalmazások — iOS és Android egyetlen kódbázisból. Belső céges appok és ügyfél-oldali megoldások.",
+      svc4_h: "IIoT &amp; adatgyűjtés",
+      svc4_p: "Ipari eszközök adatainak gyűjtése, idősoros tárolás, dashboardok. Modbus, MQTT és egyedi protokollok kezelése.",
+      svc5_h: "Rendszergazda feladatok",
+      svc5_p: "Kisebb hálózatok, szerverek és szolgáltatások üzemeltetése, monitorozás és biztonsági alapok beállítása.",
+      svc6_h: "IT biztonsági audit",
+      svc6_p: "Webes alkalmazások és kisebb infrastruktúrák átvilágítása. Konfigurációs hibák, tipikus sérülékenységek feltárása.",
+      projects_title: "Projektek",
+      prj1_h: "Solar Inverter Monitor",
+      prj1_p: "WPF-alapú asztali monitorozó alkalmazás napelemes inverterekhez. Valós idejű akkumulátor-, hálózati és termelési adatok, MVVM architektúra, idősoros adatkezelés és testreszabható dashboard.",
+      prj2_h: "Odoo 17 SaaS &rarr; on-premise migráció",
+      prj2_p: "Vállalati ERP rendszer áttelepítése felhőből saját szerverre. PostgreSQL dump kezelés, verzió-downgrade, filestore migráció, Docker környezet, leállás-minimalizált éles átállás.",
+      prj3_h: "Helyszíni munkalap rendszer",
+      prj3_p: "Egyedi Odoo modul villanyszerelők terepi munkájához: mobilbarát űrlapok, vonalkódos készletkezelés, digitális aláírás, fotódokumentáció, automatikus jótállási jegy és számla generálás QWeb riportokkal.",
+      prj4_h: "Vállalati IT infrastruktúra",
+      prj4_p: "Kisvállalat új telephelyének teljes IT rendszere: hálózat (VLAN, OSPF, VPN), HP ProLiant szerver, HPE storage, Proxmox virtualizáció, TrueNAS Scale, IP-kamerák, riasztórendszer és GDPR-megfelelő adatvédelem.",
+      prj5_h: "Tailscale multi-site VPN",
+      prj5_p: "Több telephely biztonságos, mesh-alapú összekötése Tailscale-lel. Központi hozzáférés-szabályozás, távoli admin, terminál-szintű hálózati kapcsolat publikus IP nélkül.",
+      prj6_h: "IP-kamera rendszer",
+      prj6_p: "TP-Link VIGI alapú telephelyi megfigyelőrendszer telepítése és konfigurálása. PoE switchek, NVR, távoli elérés VPN-en, mozgásérzékelés és értesítések beállítása.",
+      prj7_h: "Backup és helyreállítási rendszer",
+      prj7_p: "ZFS snapshot-alapú mentési stratégia TrueNAS Scale-en, ütemezett replikációval és tesztelt visszaállítási eljárással. GDPR-szempontú adatkezelés, dokumentált disaster recovery folyamat.",
+      prj8_h: "Smart sensor &amp; riasztó integráció",
+      prj8_p: "Sonoff Zigbee érzékelők és mozgásdetektorok integrálása iHost központtal. Lokális automatizációk, beléptetés-figyelés, riasztó-trigger logika és értesítés-pipeline kiépítése.",
+      prj9_h: "Bemutatkozó weboldalak",
+      prj9_p: "Kisvállalkozások számára készített egyoldalas céges weboldalak — letisztult dizájn, gyors betöltés, SEO-alapok, kapcsolati űrlap és reszponzív megjelenés mobilra is.",
+      prj10_h: "Belső céges mobilapp",
+      prj10_p: "Cross-platform alkalmazás dolgozói folyamatok támogatására: bejelentkezés, feladatlisták, push értesítések és offline mód, REST API integrációval.",
+      projects_note: "// a projektek egy része NDA alatt áll — referenciaként szívesen elküldöm őket egyeztetés után.",
+      skills_title: "Készségek &amp; tanulmányok",
+      skb_tech: "// technológia",
+      skb_expertise: "// szakterület",
+      chip_ts: "Time-series adatok",
+      chip_erp: "ERP migráció",
+      chip_gdpr: "GDPR / adatvédelem",
+      skb_edu: "// tanulmányok &amp; képesítések",
+      tl1_when: "2021 — 2025 &middot; diploma",
+      tl1_what: "Üzemmérnök informatikus (BSc) — Kibervédelem szakirány",
+      tl1_where: "Óbudai Egyetem &middot; Neumann János Informatikai Kar",
+      tl2_when: "2025 — szakdolgozat",
+      tl2_what: "Kisvállalati IT infrastruktúra tervezése és kiépítése",
+      tl2_where: "hálózati alapok, Proxmox / TrueNAS, Odoo on-premise migráció, egyedi modulok",
+      tl3_when: "2021 — 2022",
+      tl3_what: "IT rendszer- és alkalmazás-üzemeltető technikus",
+      tl3_where: "BMSZC Bláthy Ottó Titusz Informatikai Technikum",
+      tl4_when: "2016 — 2020",
+      tl4_what: "Érettségi — Informatika szakirány",
+      tl4_where: "BMSZC Bláthy Ottó Titusz Informatikai Technikum",
+      tl5_when: "tanúsítvány",
+      tl5_what: "Angol nyelvvizsga — telc GmbH",
+      tl5_where: "azonosító: PD330-01449",
+      tl6_when: "tanúsítvány",
+      tl6_what: "International Computer Drivers License (ICDL)",
+      tl6_where: "regisztrációs szám: HU000006053",
+      contact_title: "Kapcsolat",
+      contact_h2: "Beszéljünk a <span class='gradient'>projektedről.</span>",
+      contact_p: "Egyedi fejlesztés, tanácsadás, vagy egy meglévő rendszer továbbfejlesztése — írj egy üzenetet és válaszolok pár napon belül.",
+      footer_copy: "&copy; <span id='year'></span> Krész Péter — minden jog fenntartva."
+    },
+    en: {
+      __title: "Krész Péter — Freelance developer",
+      hero_status: "Available for new projects",
+      hero_title: "Krész Péter<br /><span class='gradient'>freelance</span> developer.",
+      hero_desc: "As a sole entrepreneur I design and build industrial and business IT solutions. I currently work at Ecocell Solar Energy, developing software and data-management tools for energy systems, and I also take on freelance projects.",
+      cta_contact: "Get in touch",
+      cta_projects: "View projects",
+      about_title: "About me",
+      about_p1: "I graduated from Óbuda University as a Computer Science Operational Engineer, specialising in cybersecurity. Both my studies and my work point toward industrial IT and data engineering — IIoT systems, time-series data and energy monitoring.",
+      about_p2: "Alongside my job I take on freelance work: small-to-mid-size CRM solutions, websites and mobile apps. I'm most at home where software has to connect to devices, data or processes — where the goal isn't just a UI, but a genuinely working, maintainable solution.",
+      about_p3: "If you have an idea, a problem, or an existing system you'd like to improve — I'm happy to talk it through.",
+      card_role: "Freelance dev",
+      card_status: "available",
+      services_title: "Services",
+      svc1_h: "CRM systems",
+      svc1_p: "Designing, integrating and customising customer-relationship systems. Custom modules, automations and APIs.",
+      svc2_h: "Web development",
+      svc2_p: "Company sites, landing pages and small web apps. Clean code, fast loading and responsive design.",
+      svc3_h: "Mobile app development",
+      svc3_p: "Cross-platform mobile apps — iOS and Android from a single codebase. Internal company apps and customer-facing solutions.",
+      svc4_h: "IIoT &amp; data acquisition",
+      svc4_p: "Collecting data from industrial devices, time-series storage and dashboards. Modbus, MQTT and custom protocols.",
+      svc5_h: "System administration",
+      svc5_p: "Operating small networks, servers and services — monitoring and security fundamentals.",
+      svc6_h: "IT security audit",
+      svc6_p: "Reviewing web applications and small infrastructures. Finding misconfigurations and common vulnerabilities.",
+      projects_title: "Projects",
+      prj1_h: "Solar Inverter Monitor",
+      prj1_p: "A WPF desktop monitoring app for solar inverters. Real-time battery, grid and production data, MVVM architecture, time-series handling and a customisable dashboard.",
+      prj2_h: "Odoo 17 SaaS &rarr; on-premise migration",
+      prj2_p: "Migrating an enterprise ERP from the cloud to a self-hosted server. PostgreSQL dump handling, version downgrade, filestore migration, a Docker environment and a downtime-minimised go-live.",
+      prj3_h: "On-site worksheet system",
+      prj3_p: "A custom Odoo module for electricians' field work: mobile-friendly forms, barcode inventory, digital signatures, photo documentation and automatic warranty-certificate and invoice generation with QWeb reports.",
+      prj4_h: "Corporate IT infrastructure",
+      prj4_p: "The complete IT system for a small company's new site: network (VLAN, OSPF, VPN), HP ProLiant server, HPE storage, Proxmox virtualisation, TrueNAS Scale, IP cameras, alarm system and GDPR-compliant data protection.",
+      prj5_h: "Tailscale multi-site VPN",
+      prj5_p: "Securely connecting multiple sites with a Tailscale mesh. Central access control, remote admin and terminal-level network connectivity without a public IP.",
+      prj6_h: "IP camera system",
+      prj6_p: "Installing and configuring a TP-Link VIGI site-surveillance system. PoE switches, NVR, remote access over VPN, motion detection and notifications.",
+      prj7_h: "Backup &amp; recovery system",
+      prj7_p: "A ZFS snapshot-based backup strategy on TrueNAS Scale with scheduled replication and a tested restore procedure. GDPR-aware data handling and a documented disaster-recovery process.",
+      prj8_h: "Smart sensor &amp; alarm integration",
+      prj8_p: "Integrating Sonoff Zigbee sensors and motion detectors with an iHost hub. Local automations, access monitoring, alarm-trigger logic and a notification pipeline.",
+      prj9_h: "Company websites",
+      prj9_p: "Single-page company websites for small businesses — clean design, fast loading, SEO basics, a contact form and a responsive mobile layout.",
+      prj10_h: "Internal company mobile app",
+      prj10_p: "A cross-platform app supporting employee workflows: login, task lists, push notifications and offline mode, with REST API integration.",
+      projects_note: "// some projects are under NDA — I'm happy to share them as references after we talk.",
+      skills_title: "Skills &amp; education",
+      skb_tech: "// technology",
+      skb_expertise: "// expertise",
+      chip_ts: "Time-series data",
+      chip_erp: "ERP migration",
+      chip_gdpr: "GDPR / data protection",
+      skb_edu: "// education &amp; certifications",
+      tl1_when: "2021 — 2025 &middot; graduated",
+      tl1_what: "BSc in Computer Science Operational Engineering — Cybersecurity",
+      tl1_where: "Óbuda University &middot; John von Neumann Faculty of Informatics",
+      tl2_when: "2025 — thesis",
+      tl2_what: "Designing and building a small-business IT infrastructure",
+      tl2_where: "network fundamentals, Proxmox / TrueNAS, Odoo on-premise migration, custom modules",
+      tl3_when: "2021 — 2022",
+      tl3_what: "IT systems and application operations technician",
+      tl3_where: "BMSZC Bláthy Ottó Titusz IT Vocational School",
+      tl4_when: "2016 — 2020",
+      tl4_what: "Secondary-school diploma — IT specialisation",
+      tl4_where: "BMSZC Bláthy Ottó Titusz IT Vocational School",
+      tl5_when: "certificate",
+      tl5_what: "English language exam — telc GmbH",
+      tl5_where: "ID: PD330-01449",
+      tl6_when: "certificate",
+      tl6_what: "International Computer Drivers License (ICDL)",
+      tl6_where: "registration no.: HU000006053",
+      contact_title: "Contact",
+      contact_h2: "Let's talk about <span class='gradient'>your project.</span>",
+      contact_p: "Custom development, consulting, or improving an existing system — drop me a message and I'll reply within a few days.",
+      footer_copy: "&copy; <span id='year'></span> Krész Péter — all rights reserved."
+    }
+  };
+
+  // ===== Typed text effect (language-aware) =====
+  const typedEl = document.getElementById('typedText');
+  let phrases = phrasesByLang.hu;
+  let pIdx = 0, cIdx = 0, deleting = false, typeGen = 0;
+  function typeLoop(gen) {
+    if (gen !== typeGen) return;
+    const current = phrases[pIdx % phrases.length];
+    if (!deleting) {
+      cIdx++;
+      typedEl.textContent = current.slice(0, cIdx);
+      if (cIdx === current.length) { deleting = true; setTimeout(() => typeLoop(gen), 1800); return; }
+      setTimeout(() => typeLoop(gen), 55 + Math.random() * 40);
+    } else {
+      cIdx--;
+      typedEl.textContent = current.slice(0, cIdx);
+      if (cIdx === 0) { deleting = false; pIdx = (pIdx + 1) % phrases.length; setTimeout(() => typeLoop(gen), 250); return; }
+      setTimeout(() => typeLoop(gen), 28);
+    }
+  }
+  function restartTyping() {
+    typeGen++;
+    const gen = typeGen;
+    pIdx = 0; cIdx = 0; deleting = false;
+    if (typedEl) typedEl.textContent = '';
+    setTimeout(() => typeLoop(gen), 400);
+  }
+
+  function setLang(lang) {
+    if (!translations[lang]) lang = 'hu';
+    const dict = translations[lang];
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (dict[key] !== undefined) el.innerHTML = dict[key];
+    });
+    document.title = dict.__title;
+    const yEl = document.getElementById('year');
+    if (yEl) yEl.textContent = YEAR;
+    document.querySelectorAll('#langSwitch button').forEach(b => {
+      b.classList.toggle('active', b.dataset.lang === lang);
+    });
+    try { localStorage.setItem('site_lang', lang); } catch (e) {}
+    phrases = phrasesByLang[lang];
+    restartTyping();
+  }
+
+  document.querySelectorAll('#langSwitch button').forEach(b => {
+    b.addEventListener('click', () => setLang(b.dataset.lang));
+  });
+
+  let initialLang = 'hu';
+  try { const saved = localStorage.getItem('site_lang'); if (saved && translations[saved]) initialLang = saved; } catch (e) {}
+  setLang(initialLang);
 
   // ===== Reveal on scroll (with stagger) =====
   const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
@@ -1633,43 +1897,6 @@
     requestAnimationFrame(animateSpot);
   }
   animateSpot();
-
-  // ===== Typed text effect for hero subtitle =====
-  const phrases = [
-    'CRM rendszerek',
-    'webfejlesztés',
-    'mobilapp · cross-platform',
-    'IIoT · Modbus · MQTT',
-    'Odoo · ERP migráció',
-    'Proxmox · TrueNAS · Linux',
-    'hálózati infrastruktúra'
-  ];
-  const typedEl = document.getElementById('typedText');
-  let pIdx = 0, cIdx = 0, deleting = false;
-  function typeLoop() {
-    const current = phrases[pIdx];
-    if (!deleting) {
-      cIdx++;
-      typedEl.textContent = current.slice(0, cIdx);
-      if (cIdx === current.length) {
-        deleting = true;
-        setTimeout(typeLoop, 1800);
-        return;
-      }
-      setTimeout(typeLoop, 55 + Math.random() * 40);
-    } else {
-      cIdx--;
-      typedEl.textContent = current.slice(0, cIdx);
-      if (cIdx === 0) {
-        deleting = false;
-        pIdx = (pIdx + 1) % phrases.length;
-        setTimeout(typeLoop, 250);
-        return;
-      }
-      setTimeout(typeLoop, 28);
-    }
-  }
-  setTimeout(typeLoop, 900);
 
   // ===== Project card cursor-tracked glow =====
   document.querySelectorAll('.project').forEach(card => {
